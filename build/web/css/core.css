@@ -951,16 +951,61 @@ footer .cl-address div p{
 	transform: rotateZ(-45deg);
 	
 }
+.cl-portfolio-items { 
+	overflow: hidden; 
+	position: relative;
+	height: 350px;
+	margin: 2px 0;
+}
 
+.cl-portfolio-items img{ 
+	width: 70%; 
+                  height: 70%;
+             
+}
 
+.cl-portfolio-items:hover > .cl-portfolio-overlays {
+	bottom: 0;
+}
 
+.cl-portfolio-items .cl-portfolio-overlays {
+	height: 50%;
+	width: 70%;
+	position: absolute;
+	background-color: #4bbabe;
+                  margin-top: 2px;
+	color: #fff;
+	padding: 0 20px;
+                  padding-bottom: 10px;
+	bottom: -50%;
+	-webkit-transition: .5s ease all;
+	-o-transition: .5s ease all;
+	-moz-transition: .5s ease all;
+	transition: .5s ease all;
+}
 
+.cl-portfolio-items .cl-portfolio-overlays h3{
+	font-size: 1.3em;
+	text-transform: uppercase;
+	-webkit-font-smoothing: antialiased;
+	font-weight: 600;
+}
 
+.cl-portfolio-items .cl-portfolio-overlays .fa{
+	height: 40px;
+	width: 40px;
+	line-height: 40px;
+	display: inline-block;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	text-align: center;
+	font-size: 1.1em;
+	margin: 0 3px;
+	cursor: pointer;
+                  padding-bottom: 4px;
+}
 
-
-
-
-
-
-
-
+.cl-portfolio-items .cl-portfolio-overlays .fa:hover{
+	background-color: #fff;
+	color: #57bc54;
+}

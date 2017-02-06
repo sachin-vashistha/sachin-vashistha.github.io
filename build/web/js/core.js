@@ -96,8 +96,11 @@ $(document).ready(function() {
         var filterVal = $(this).data('filter');
              
         if(filterVal == 'all') {
+            
             $('.portfolio-items .hidden').fadeIn('slow').removeClass('hidden');
+            $('.portfolio-items_sec .hidden').fadeIn('slow').removeClass('hidden');
         } else {
+            
             $('.portfolio-items .col-sm-4').each(function() {
                 if($(this).data('filter') !== filterVal) {
                     $(this).fadeOut('slow',function(){
@@ -108,6 +111,18 @@ $(document).ready(function() {
                     $(this).fadeIn('slow').removeClass('hidden');
                 }
             });
+            
+             $('.portfolio-items_sec .col-sm-4').each(function() {
+                if($(this).data('filter') !== filterVal) {
+                    $(this).fadeOut('slow',function(){
+                        $(this).addClass('hidden');
+                    });
+                    
+                } else {
+                    $(this).fadeIn('slow').removeClass('hidden');
+                }
+            });
+            
         }
          
         return false;
