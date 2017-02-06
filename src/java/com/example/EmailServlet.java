@@ -1,6 +1,7 @@
 package com.example;
 
 import java.io.IOException;
+import java.security.Security;
 import java.util.Properties;
 import javax.ejb.EJB;
 import javax.mail.Authenticator;
@@ -26,23 +27,33 @@ import javax.servlet.http.HttpServletResponse;
  * @author sachin vashistha
  */
 public class EmailServlet extends HttpServlet {
+    Proxy_info proxy_info;
+    String[] prox=new String[2];
+    String host,port;
 @Override
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     System.out.println("inside servlet");
+    proxy_info=new Proxy_info();
+    prox=proxy_info.checkProxy();
+    host=prox[0];
+    port=prox[1];
     String name=request.getParameter("send_name");
     String email=request.getParameter("send_email");
     String mess_=request.getParameter("send_mess");
-      String to="sachinvashistha6916@gmail.com";
+     String to="sachinvashistha6916@gmail.com";
      System.out.println(mess_);
   Properties props = new Properties();  
+ /*  props.setProperty("proxySet","true");
+   props.setProperty("socksProxyHost",host);
+   props.setProperty("socksProxyPort",port);*/
    props.put("mail.smtp.user", to);
- props.put("mail.smtp.host", "smtp.gmail.com");  
-  props.put("mail.smtp.socketFactory.port", "587");  
+   props.put("mail.smtp.host", "smtp.gmail.com");  
+   props.put("mail.smtp.socketFactory.port", "587");  
    props.put("mail.smtp.port", "587");
-    props.put("mail.smtp.starttls.enable","true");
-    props.put("mail.smtp.debug", "true");
-    props.put("mail.smtp.auth", "true");
-  props.put("mail.smtp.socketFactory.class",  
+   props.put("mail.smtp.starttls.enable","true");
+   props.put("mail.smtp.debug", "true");
+   props.put("mail.smtp.auth", "true");
+   props.put("mail.smtp.socketFactory.class",  
             "javax.net.ssl.SSLSocketFactory");  
   props.put("mail.smtp.socketFactory.fallback", "false");
      Session session = Session.getInstance(props,  
